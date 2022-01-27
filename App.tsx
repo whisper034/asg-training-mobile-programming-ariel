@@ -1,20 +1,22 @@
 import React from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
-  View,
 } from 'react-native';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import AppNavigation from './src/navigation';
+import { PersistStore, store } from './src/store';
 
 const App = () => {
   return (
     <SafeAreaView style={styles.base}>
-      <AppNavigation />
+      <Provider store={store}>
+        <PersistGate persistor={PersistStore}>
+          <AppNavigation />
+        </PersistGate>
+      </Provider>
     </SafeAreaView>
   );
 };

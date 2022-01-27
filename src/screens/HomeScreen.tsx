@@ -2,8 +2,6 @@ import { ActivityIndicator, View, Text, TouchableOpacity, ListRenderItemInfo, Fl
 import React, { useEffect, useState } from 'react';
 import { IUserListItem } from '../interfaces';
 import { useNavigation } from '@react-navigation/native';
-import { FloatingAction } from "react-native-floating-action";
-import { shouldUseActivityState } from 'react-native-screens';
 
 const HomeScreen = () => {
 
@@ -40,9 +38,11 @@ const HomeScreen = () => {
       <TouchableOpacity onPress={() => navigateToDetailScreen(item.login)}>
         <View style={[styles.item, styles.shadowProp]}>
           <Image style={[styles.image]} source={{uri: item.avatar_url}} />
-          <Text></Text>
-          <Text style={[styles.dataText, styles.textColor]}>{item.login}</Text>
-          <Text style={[styles.textColor]}>{item.html_url}</Text>
+          <View style={styles.view0_text}>
+            <Text style={[styles.dataText, styles.textColor]}>{item.login}</Text>
+            <Text style={[styles.textColor]}>{item.type}</Text>
+            <Text style={[styles.textColor]}>{item.html_url}</Text>
+          </View>
         </View>
       </TouchableOpacity>
     )
@@ -91,11 +91,13 @@ const styles = StyleSheet.create({
   },
 
   item: {
+    display: "flex",
+    flex: 1,
+    flexDirection: "row",
     backgroundColor: "#FFF3E4",
-    borderWidth: 2,
     borderRadius: 30,
     padding: 20,
-    margin: 3,
+    margin: 5,
     alignItems: "center",
   },
 
@@ -104,12 +106,18 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    height: 100,
-    width: 100,
+    height: 90,
+    width: 90,
+    borderRadius: 100,
   },
 
   dataText: {
     fontSize: 16,
     fontWeight: "bold",
+  },
+
+  view0_text: {
+    padding: 10,
+    marginLeft: 20
   },
 });

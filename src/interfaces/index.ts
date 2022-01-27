@@ -52,4 +52,5 @@ export interface IUserDetailItem {
   following: number;
   created_at: string;
   updated_at: string;
+  isFavorite: boolean;
 }

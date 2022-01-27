@@ -3,7 +3,5 @@ export type RootStackParamList = {
   DetailScreen: {
     item: string;
   },
-  FavoriteScreen: {
-    item: string;
-  },
+  FavoriteScreen: undefined,
 }
